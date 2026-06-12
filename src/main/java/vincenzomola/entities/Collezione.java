@@ -264,7 +264,7 @@ public class Collezione {
         }
 
         List<Gioco> giocoCostoso = collection.stream()
-                .max(Comparator.comparingDouble(gioco -> gioco.getPrice()))
+                .max(Comparator.comparingDouble(Gioco::getPrice))
                 .stream()
                 .toList();
 
