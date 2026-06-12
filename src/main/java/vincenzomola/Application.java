@@ -55,6 +55,7 @@ public class Application {
                     case 4 -> ricercaPerGiocatori();
                     case 5 -> rimuoviPerId();
                     case 6 -> rimuoviPerId();
+                    case 6 -> rimuoviPerId();
 
                     default -> System.out.println("ELEMENTO NON VALIDO RIPROVA");
                 }

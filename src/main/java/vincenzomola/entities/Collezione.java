@@ -3,9 +3,7 @@ package vincenzomola.entities;
 import vincenzomola.enums.Genere;
 import vincenzomola.enums.Piattaforma;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Collezione {
 
@@ -237,4 +235,42 @@ public class Collezione {
         }
     }
 
+
+    // METODO 7
+    public static void stampaStatistiche() {
+        if (collection.isEmpty()) {
+            System.out.println("Collezione vuota!");
+            return;
+        }
+
+        long totaleVideogiochi = collection.stream()
+                .filter(gioco -> gioco instanceof Videogioco)
+                .count();
+
+        long totaleGiochiDaTavolo = collection.stream()
+                .filter(gioco -> gioco instanceof GiocoDaTavolo)
+                .count();
+
+        System.out.println("Videogiochi: " + totaleVideogiochi);
+        System.out.println("Giochi da Tavolo: " + totaleGiochiDaTavolo);
+
+        OptionalDouble optionalMedia = collection.stream()
+                .mapToDouble(Gioco::getPrice)
+                .average();
+
+        if (optionalMedia.isPresent()) {
+            double mediaPrezzi = optionalMedia.getAsDouble();
+            System.out.printf("Media prezzi: ", mediaPrezzi);
+        }
+
+        List<Gioco> giocoCostoso = collection.stream()
+                .max(Comparator.comparingDouble(gioco -> gioco.getPrice()))
+                .stream()
+                .toList();
+
+        if (!giocoCostoso.isEmpty()) {
+            Gioco piuCaro = giocoCostoso.get(0);
+            System.out.println(piuCaro.getTitle() + " è il gioco piu costosto a " + piuCaro.getPrice() + " euro");
+        }
+    }
 }
