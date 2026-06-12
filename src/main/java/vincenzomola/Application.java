@@ -54,8 +54,8 @@ public class Application {
                     case 3 -> ricercaPerPrezzo();
                     case 4 -> ricercaPerGiocatori();
                     case 5 -> rimuoviPerId();
-                    case 6 -> rimuoviPerId();
-                    case 6 -> rimuoviPerId();
+                    case 6 -> aggiornaPerId();
+                    case 7 -> stampaStatistiche();
 
                     default -> System.out.println("ELEMENTO NON VALIDO RIPROVA");
                 }
